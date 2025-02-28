@@ -1,0 +1,8 @@
+.h1-container {
+    text-align: center;
+}
+
+.h1-container div {
+    display: block;
+    margin: 10px 0;
+}
