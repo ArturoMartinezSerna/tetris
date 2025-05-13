@@ -3,6 +3,8 @@ import piezas.Pieza;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
@@ -29,15 +31,15 @@ public class Tablero extends JPanel implements KeyListener {
             }
         }*/
         tablero = piezaActual.draw(tablero);
-        tablero = piezaActual.mover(tablero, 2, 5);
         tablero = piezaActual.draw(tablero);
         this.repaint();
+        start();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.BLACK);
+        g.setColor(Color.darkGray);
         g.fillRect(0, 0, getWidth(), margenY);
         g.fillRect(0, margenY, margenX, getHeight());
         g.fillRect(0, getHeight() - margenY, getWidth(), margenY);
@@ -59,6 +61,17 @@ public class Tablero extends JPanel implements KeyListener {
     private Pieza crearPiezaAleatoria() {
         // piezas.Pieza piezaActual = new PiezaTipoPieza();
         return piezaActual;
+    }
+
+    public void start() {
+        int msRetraso = 1000;
+        Timer timer = new Timer(msRetraso, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tablero = piezaActual.mover(tablero, 0, 1);
+                repaint();
+            }
+        });
+        timer.start();
     }
 
     @Override
