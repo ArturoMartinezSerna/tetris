@@ -79,7 +79,17 @@ public class Tablero extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+            piezaActual.moverX(-1);
+            repaint();
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            piezaActual.moverX(1);
+            repaint();
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+            piezaActual.moverY(1);
+        }
     }
 
     @Override
