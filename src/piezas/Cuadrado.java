@@ -9,16 +9,7 @@ public class Cuadrado extends Pieza {
         color = 1;
     }
 
-    @Override
-    public void moverX(int x) {
-        try {
-            erase();
-            this.x += x;
-            draw();
-        } catch(ArrayIndexOutOfBoundsException e) {
 
-        }
-    }
 
     @Override
     protected boolean puedeBajar()  {
@@ -27,6 +18,24 @@ public class Cuadrado extends Pieza {
             return true;
         }
         return false;
+    }
+
+    @Override
+    protected boolean puedeMoverIzquierda() {
+        if(referenciaTablero.getTablero()[this.x-1][this.y] != 0 ||
+                referenciaTablero.getTablero()[this.x-1][this.y + 1] != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    protected boolean puedeMoverDerecha() {
+        if(referenciaTablero.getTablero()[this.x+2][this.y] != 0 ||
+                referenciaTablero.getTablero()[this.x+2][this.y + 1] != 0) {
+            return false;
+        }
+        return true;
     }
 
     @Override

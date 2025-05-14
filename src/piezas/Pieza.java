@@ -13,12 +13,13 @@ public abstract class Pieza {
         this.referenciaTablero = referenciaTablero;
     }
 
-    public abstract void moverX(int x);
     public abstract void girar();
     public abstract void draw();
     public abstract void erase();
     public abstract void colocar();
     protected abstract boolean puedeBajar();
+    protected abstract boolean puedeMoverDerecha();
+    protected abstract boolean puedeMoverIzquierda();
 
     public void moverY(int y) {
         try {
@@ -32,6 +33,27 @@ public abstract class Pieza {
             }
         } catch(ArrayIndexOutOfBoundsException e) {
             colocar(); // Choca con el borde inferior
+        }
+    }
+
+    public void moverX(int x) {
+        try {
+            if(x > 0) {
+                if (puedeMoverDerecha()) {
+                    erase();
+                    this.x += x;
+                    draw();
+                }
+            }
+            else {
+                if(puedeMoverIzquierda()) {
+                    erase();
+                    this.x += x;
+                    draw();
+                }
+            }
+        } catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("Fuera de rango X!");
         }
     }
 }
