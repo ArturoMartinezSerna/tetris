@@ -1,41 +1,73 @@
 package piezas;
 
+import paneles.Tablero;
+
 public class Cuadrado extends Pieza {
 
-    public Cuadrado() {
-        super();
+    public Cuadrado(Tablero referenciaTablero) {
+        super(referenciaTablero);
         color = 1;
     }
 
     @Override
-    public int[][] mover(int[][] tablero, int x, int y) {
-        tablero = erase(tablero);
-        this.x += x;
-        this.y += y;
-        tablero = draw(tablero);
-        return tablero;
+    public void moverX(int x) {
+        try {
+            erase();
+            this.x += x;
+            draw();
+        } catch(ArrayIndexOutOfBoundsException e) {
+
+        }
     }
 
     @Override
-    public int[][] girar(int[][] tablero) {
-        return tablero;
+    public void moverY(int y) {
+        try {
+            if(puedeBajar()) {
+                erase();
+                this.y += y;
+                draw();
+            }
+            else {
+                colocar();
+            }
+        } catch(ArrayIndexOutOfBoundsException e) {
+            colocar();
+            System.out.println("Dentro!");
+        }
+    }
+
+        private boolean puedeBajar()  {
+        if(referenciaTablero.getTablero()[this.x][this.y + 2] == 0 &&
+                    referenciaTablero.getTablero()[this.x+1][this.y + 2] == 0) {
+                return true;
+            }
+            return false;
+        }
+
+    @Override
+    public void colocar() {
+        referenciaTablero.generarPiezaAleatoria();
     }
 
     @Override
-    public int[][] draw(int[][] tablero) {
-        tablero[this.x][this.y] = color;
-        tablero[this.x + 1][this.y] = color;
-        tablero[this.x][this.y + 1] = color;
-        tablero[this.x + 1][this.y + 1] = color;
-        return tablero;
+    public void girar() {
+        ;
     }
 
     @Override
-    public int[][] erase(int[][] tablero) {
-        tablero[this.x][this.y] = 0;
-        tablero[this.x + 1][this.y] = 0;
-        tablero[this.x][this.y + 1] = 0;
-        tablero[this.x + 1][this.y + 1] = 0;
-        return tablero;
+    public void draw() {
+        referenciaTablero.getTablero()[this.x][this.y] = color;
+        referenciaTablero.getTablero()[this.x + 1][this.y] = color;
+        referenciaTablero.getTablero()[this.x][this.y + 1] = color;
+        referenciaTablero.getTablero()[this.x + 1][this.y + 1] = color;
+    }
+
+    @Override
+    public void erase() {
+        referenciaTablero.getTablero()[this.x][this.y] = 0;
+        referenciaTablero.getTablero()[this.x + 1][this.y] = 0;
+        referenciaTablero.getTablero()[this.x][this.y + 1] = 0;
+        referenciaTablero.getTablero()[this.x + 1][this.y + 1] = 0;
     }
 }

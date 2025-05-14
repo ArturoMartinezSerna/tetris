@@ -1,16 +1,22 @@
 package piezas;
 
+import paneles.Tablero;
+
 public abstract class Pieza {
 
     int x, y, color;
+    paneles.Tablero referenciaTablero;
 
-    public Pieza() {
-        this.x = 4;
+    public Pieza(Tablero referenciaTablero){
+        this.x = 3;
         this.y = 0;
+        this.referenciaTablero = referenciaTablero;
     }
 
-    public abstract int[][] mover(int[][] tablero, int x, int y);
-    public abstract int[][] girar(int[][] tablero);
-    public abstract int[][] draw(int[][] tablero);
-    public abstract int[][] erase(int[][] tablero);
+    public abstract void moverX(int x);
+    public abstract void moverY(int y);
+    public abstract void girar();
+    public abstract void draw();
+    public abstract void erase();
+    public abstract void colocar();
 }

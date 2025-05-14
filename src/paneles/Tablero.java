@@ -1,3 +1,5 @@
+package paneles;
+
 import piezas.Cuadrado;
 import piezas.Pieza;
 
@@ -11,28 +13,23 @@ import java.util.Random;
 
 public class Tablero extends JPanel implements KeyListener {
 
-    int[][] tablero = new int[10][10];
+    int[][] tablero = new int[8][8];
     Pieza piezaActual;
     int margenX = 25;
     int margenY = 25;
 
+    public int[][] getTablero() {
+        return tablero;
+    }
+
     public Tablero() {
-        Random r = new Random();
-
-        this.piezaActual = new Cuadrado();
-
         this.setFocusable(true); // Permite que pueda recibir eventos de teclado
         this.addKeyListener(this); // Añade una clase que implementa KeyListener
+
+        generarPiezaAleatoria();
+
         this.repaint(); // Dibuja el tablero llamando a paintComponent(Graphics g)
 
-        /*for(int i = 0; i < 10; i++) {
-            for(int j = 0; j < 10; j++) {
-                tablero[i][j] = r.nextInt(3);
-            }
-        }*/
-        tablero = piezaActual.draw(tablero);
-        tablero = piezaActual.draw(tablero);
-        this.repaint();
         start();
     }
 
@@ -58,16 +55,17 @@ public class Tablero extends JPanel implements KeyListener {
         }
     }
 
-    private Pieza crearPiezaAleatoria() {
-        // piezas.Pieza piezaActual = new PiezaTipoPieza();
-        return piezaActual;
+    public void generarPiezaAleatoria() {
+         this.piezaActual = new Cuadrado(this);
+         piezaActual.draw();
+         repaint();
     }
 
     public void start() {
-        int msRetraso = 1000;
+        int msRetraso = 500;
         Timer timer = new Timer(msRetraso, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                tablero = piezaActual.mover(tablero, 0, 1);
+                piezaActual.moverY(1);
                 repaint();
             }
         });
