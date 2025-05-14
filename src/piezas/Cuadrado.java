@@ -21,29 +21,13 @@ public class Cuadrado extends Pieza {
     }
 
     @Override
-    public void moverY(int y) {
-        try {
-            if(puedeBajar()) {
-                erase();
-                this.y += y;
-                draw();
-            }
-            else {
-                colocar();
-            }
-        } catch(ArrayIndexOutOfBoundsException e) {
-            colocar();
-            System.out.println("Dentro!");
+    protected boolean puedeBajar()  {
+    if(referenciaTablero.getTablero()[this.x][this.y + 2] == 0 &&
+                referenciaTablero.getTablero()[this.x+1][this.y + 2] == 0) {
+            return true;
         }
+        return false;
     }
-
-        private boolean puedeBajar()  {
-        if(referenciaTablero.getTablero()[this.x][this.y + 2] == 0 &&
-                    referenciaTablero.getTablero()[this.x+1][this.y + 2] == 0) {
-                return true;
-            }
-            return false;
-        }
 
     @Override
     public void colocar() {

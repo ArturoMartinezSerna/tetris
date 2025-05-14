@@ -14,9 +14,24 @@ public abstract class Pieza {
     }
 
     public abstract void moverX(int x);
-    public abstract void moverY(int y);
     public abstract void girar();
     public abstract void draw();
     public abstract void erase();
     public abstract void colocar();
+    protected abstract boolean puedeBajar();
+
+    public void moverY(int y) {
+        try {
+            if(puedeBajar()) {
+                erase();
+                this.y += y;
+                draw();
+            }
+            else {
+                colocar(); // Choca con otra pieza
+            }
+        } catch(ArrayIndexOutOfBoundsException e) {
+            colocar(); // Choca con el borde inferior
+        }
+    }
 }
