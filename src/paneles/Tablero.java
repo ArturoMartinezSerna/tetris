@@ -77,32 +77,32 @@ public class Tablero extends JPanel implements KeyListener {
     
     public void eliminaLineasCompletas() {
         bucleExterno:
-        for(int i = 0; i < tablero.length; i++) {
-            for(int j = 0; j < tablero[i].length; j++) {
-                if(tablero[i][j] == 0)
+        for(int fila = 0; fila < tablero.length; fila++) { // Recorre FILAS
+            for(int columna = 0; columna < tablero[fila].length; columna++) {
+                if(tablero[fila][columna] == 0)
                     continue bucleExterno; // No se elimina
             }
-            eliminarLinea(i);
+            eliminarLinea(fila);
             // todas las líneas completas anteriores se han eliminado
             // así que no hace falta comprobar que la línea que baja no esté completa
         }
     }
-        private void eliminarLinea(int numeroLinea) {
-            for(int i = numeroLinea; i >= 1; i--) {
-                bajarLinea(i);
+        private void eliminarLinea(int filaBorrar) {
+            for(int fila = filaBorrar; fila >= 1; fila--) {
+                bajarLinea(fila);
             }
             vaciarLinea(0);
         }
 
-            private void bajarLinea(int numeroLinea) {
-                for(int i = 0; i < tablero[numeroLinea].length; i++) {
-                    tablero[i][numeroLinea - 1] = tablero[i][numeroLinea];
+            private void bajarLinea(int filaBorrar) {
+                for(int columna = 0; columna < tablero[filaBorrar].length; columna++) {
+                    tablero[filaBorrar][columna] = tablero[filaBorrar - 1][columna];
                 }
             }
 
             private void vaciarLinea(int numeroLinea) {
-                for(int i = 0; i < tablero[numeroLinea].length; i++) {
-                    tablero[i][numeroLinea] = 0;
+                for(int j = 0; j < tablero[numeroLinea].length; j++) {
+                    tablero[numeroLinea][j] = 0;
                 }
             }
 
