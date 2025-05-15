@@ -13,8 +13,8 @@ public class Cuadrado extends Pieza {
 
     @Override
     protected boolean puedeBajar()  {
-    if(referenciaTablero.getTablero()[this.x][this.y + 2] == 0 &&
-                referenciaTablero.getTablero()[this.x+1][this.y + 2] == 0) {
+    if(referenciaTablero.getTablero()[this.y][this.x + 2] == 0 &&
+                referenciaTablero.getTablero()[this.y+1][this.x + 2] == 0) {
             return true;
         }
         return false;
@@ -22,8 +22,8 @@ public class Cuadrado extends Pieza {
 
     @Override
     protected boolean puedeMoverIzquierda() {
-        if(referenciaTablero.getTablero()[this.x-1][this.y] != 0 ||
-                referenciaTablero.getTablero()[this.x-1][this.y + 1] != 0) {
+        if(referenciaTablero.getTablero()[this.y-1][this.x] != 0 ||
+                referenciaTablero.getTablero()[this.y-1][this.x + 1] != 0) {
             return false;
         }
         return true;
@@ -31,8 +31,8 @@ public class Cuadrado extends Pieza {
 
     @Override
     protected boolean puedeMoverDerecha() {
-        if(referenciaTablero.getTablero()[this.x+2][this.y] != 0 ||
-                referenciaTablero.getTablero()[this.x+2][this.y + 1] != 0) {
+        if(referenciaTablero.getTablero()[this.y+2][this.x] != 0 ||
+                referenciaTablero.getTablero()[this.y+2][this.x + 1] != 0) {
             return false;
         }
         return true;
@@ -45,17 +45,17 @@ public class Cuadrado extends Pieza {
 
     @Override
     public void draw() {
-        referenciaTablero.getTablero()[this.x][this.y] = color;
-        referenciaTablero.getTablero()[this.x + 1][this.y] = color;
-        referenciaTablero.getTablero()[this.x][this.y + 1] = color;
-        referenciaTablero.getTablero()[this.x + 1][this.y + 1] = color;
+        referenciaTablero.getTablero()[this.y][this.x] = color;
+        referenciaTablero.getTablero()[this.y + 1][this.x] = color;
+        referenciaTablero.getTablero()[this.y][this.x + 1] = color;
+        referenciaTablero.getTablero()[this.y + 1][this.x + 1] = color;
     }
 
     @Override
     public void erase() {
-        referenciaTablero.getTablero()[this.x][this.y] = 0;
-        referenciaTablero.getTablero()[this.x + 1][this.y] = 0;
-        referenciaTablero.getTablero()[this.x][this.y + 1] = 0;
-        referenciaTablero.getTablero()[this.x + 1][this.y + 1] = 0;
+        referenciaTablero.getTablero()[this.y][this.x] = 0;
+        referenciaTablero.getTablero()[this.y + 1][this.x] = 0;
+        referenciaTablero.getTablero()[this.y][this.x + 1] = 0;
+        referenciaTablero.getTablero()[this.y + 1][this.x + 1] = 0;
     }
 }
