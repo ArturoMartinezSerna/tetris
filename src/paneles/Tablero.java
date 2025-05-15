@@ -41,6 +41,7 @@ public class Tablero extends JPanel implements KeyListener {
         g.fillRect(0, margenY, margenX, getHeight());
         g.fillRect(0, getHeight() - margenY, getWidth(), margenY);
         g.fillRect(getWidth() - margenX, 0, margenX, getHeight());
+
         for(int i = 0; i < tablero.length; i++) {
             for(int j = 0; j < tablero[i].length; j++) {
                 switch(tablero[i][j]) {
@@ -48,9 +49,9 @@ public class Tablero extends JPanel implements KeyListener {
                     case 1: g.setColor(Color.green); break;
                     case 2: g.setColor(Color.blue); break;
                 }
-                g.fillRect(margenX + i*100, margenY + j*100, 100, 100);
+                g.fillRect(margenX + j*100, margenY + i*100, 100, 100);
                 g.setColor(Color.black);
-                g.drawRect(margenX + i*100, margenY + j*100, 100, 100);
+                g.drawRect(margenX + j*100, margenY + i*100, 100, 100);
             }
         }
     }
