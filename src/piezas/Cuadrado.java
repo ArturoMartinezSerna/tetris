@@ -39,11 +39,6 @@ public class Cuadrado extends Pieza {
     }
 
     @Override
-    public void colocar() {
-        referenciaTablero.generarPiezaAleatoria();
-    }
-
-    @Override
     public void girar() {
         ;
     }

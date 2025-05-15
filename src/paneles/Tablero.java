@@ -55,11 +55,55 @@ public class Tablero extends JPanel implements KeyListener {
         }
     }
 
+    public void colocar() {
+        eliminaLineasCompletas();
+        generarPiezaAleatoria();
+
+        System.out.println("TABLERO:");
+        for(int i = 0; i < tablero.length; i++) {
+            for(int j = 0; j < tablero[i].length; j++) {
+                System.out.print(tablero[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public void generarPiezaAleatoria() {
          this.piezaActual = new Cuadrado(this);
          piezaActual.draw();
          repaint();
     }
+    
+    public void eliminaLineasCompletas() {
+        bucleExterno:
+        for(int i = 0; i < tablero.length; i++) {
+            for(int j = 0; j < tablero[i].length; j++) {
+                if(tablero[i][j] == 0)
+                    continue bucleExterno; // No se elimina
+            }
+            eliminarLinea(i);
+            // todas las líneas completas anteriores se han eliminado
+            // así que no hace falta comprobar que la línea que baja no esté completa
+        }
+    }
+        private void eliminarLinea(int numeroLinea) {
+            for(int i = numeroLinea; i >= 1; i--) {
+                bajarLinea(i);
+            }
+            vaciarLinea(0);
+        }
+
+            private void bajarLinea(int numeroLinea) {
+                for(int i = 0; i < tablero[numeroLinea].length; i++) {
+                    tablero[i][numeroLinea - 1] = tablero[i][numeroLinea];
+                }
+            }
+
+            private void vaciarLinea(int numeroLinea) {
+                for(int i = 0; i < tablero[numeroLinea].length; i++) {
+                    tablero[i][numeroLinea] = 0;
+                }
+            }
 
     public void start() {
         int msRetraso = 500;

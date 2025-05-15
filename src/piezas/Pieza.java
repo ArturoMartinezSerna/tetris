@@ -16,7 +16,6 @@ public abstract class Pieza {
     public abstract void girar();
     public abstract void draw();
     public abstract void erase();
-    public abstract void colocar();
     protected abstract boolean puedeBajar();
     protected abstract boolean puedeMoverDerecha();
     protected abstract boolean puedeMoverIzquierda();
@@ -29,10 +28,10 @@ public abstract class Pieza {
                 draw();
             }
             else {
-                colocar(); // Choca con otra pieza
+                referenciaTablero.colocar(); // Choca con otra pieza
             }
         } catch(ArrayIndexOutOfBoundsException e) {
-            colocar(); // Choca con el borde inferior
+            referenciaTablero.colocar(); // Choca con el borde inferior
         }
     }
 
