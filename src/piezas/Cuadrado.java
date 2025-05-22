@@ -9,8 +9,6 @@ public class Cuadrado extends Pieza {
         color = 1;
     }
 
-
-
     @Override
     protected boolean puedeBajar()  {
     if(referenciaTablero.getTablero()[this.y + 2][this.x] == 0 &&
