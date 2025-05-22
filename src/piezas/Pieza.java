@@ -4,27 +4,29 @@ import paneles.Tablero;
 
 public abstract class Pieza {
 
-    int x, y, color;
+    int columna, fila, color;
     paneles.Tablero referenciaTablero;
 
     public Pieza(Tablero referenciaTablero){
-        this.x = 3;
-        this.y = 0;
+        this.columna = 3;
+        this.fila = 0;
         this.referenciaTablero = referenciaTablero;
     }
 
     public abstract void girar();
+    public abstract boolean puedeGirar();
     public abstract void draw();
     public abstract void erase();
     protected abstract boolean puedeBajar();
     protected abstract boolean puedeMoverDerecha();
     protected abstract boolean puedeMoverIzquierda();
+    public abstract boolean puedeCrearse();
 
-    public void moverY(int y) {
+    public void moverY(int fila) {
         try {
             if(puedeBajar()) {
                 erase();
-                this.y += y;
+                this.fila += fila;
                 draw();
             }
             else {
@@ -35,19 +37,19 @@ public abstract class Pieza {
         }
     }
 
-    public void moverX(int x) {
+    public void moverX(int columna) {
         try {
-            if(x > 0) {
+            if(columna > 0) {
                 if (puedeMoverDerecha()) {
                     erase();
-                    this.x += x;
+                    this.columna += columna;
                     draw();
                 }
             }
             else {
                 if(puedeMoverIzquierda()) {
                     erase();
-                    this.x += x;
+                    this.columna += columna;
                     draw();
                 }
             }

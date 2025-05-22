@@ -1,6 +1,7 @@
 package paneles;
 
 import piezas.Cuadrado;
+import piezas.Linea;
 import piezas.Pieza;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 public class Tablero extends JPanel implements KeyListener {
 
@@ -16,6 +18,7 @@ public class Tablero extends JPanel implements KeyListener {
     Pieza piezaActual;
     int margenX = 25;
     int margenY = 25;
+    Timer timer;
 
     public Tablero() {
         this.setFocusable(true); // Permite que pueda recibir eventos de teclado
@@ -28,17 +31,28 @@ public class Tablero extends JPanel implements KeyListener {
 
     //TODO: Crear otras piezas, no solo cuadrados
     public void generarPiezaAleatoria() {
-        this.piezaActual = new Cuadrado(this);
-        piezaActual.draw();
-        repaint();
+        Random random = new Random();
+        int tipoPieza = random.nextInt(2);
+
+        switch(tipoPieza) {
+            case 0: piezaActual = new Cuadrado(this); break;
+            case 1: piezaActual = new Linea(this); break;
+            //case 2: piezaActual = new Cuadrado(this); break;
+        }
+
+        if(piezaActual.puedeCrearse())
+            piezaActual.draw();
+        else {
+            piezaActual = null;
+            timer.stop();
+        }
     }
 
     public void start() {
         int msRetraso = 500;
-        Timer timer = new Timer(msRetraso, new ActionListener() {
+        timer = new Timer(msRetraso, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 piezaActual.moverY(1);
-                repaint();
             }
         });
         timer.start();
@@ -61,7 +75,7 @@ public class Tablero extends JPanel implements KeyListener {
                 switch(tablero[i][j]) {
                     case 0: g.setColor(Color.black); break;
                     case 1: g.setColor(Color.green); break;
-                    //case 2: g.setColor(Color.blue); break;
+                    case 2: g.setColor(Color.blue); break;
                 }
                 g.fillRect(margenX + j*100, margenY + i*100, 100, 100);
 
@@ -125,17 +139,18 @@ public class Tablero extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            piezaActual.moverX(-1);
-            repaint();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            piezaActual.moverX(1);
-            repaint();
-        }
-        else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            piezaActual.moverY(1);
-            repaint();
+        try {
+            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                piezaActual.moverX(-1);
+            } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                piezaActual.moverX(1);
+            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                piezaActual.moverY(1);
+            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
+                piezaActual.girar();
+            }
+        } catch(NullPointerException ex) {
+            System.out.println("El juego ha terminado! No puedes moverte!");
         }
     }
 
