@@ -5,6 +5,7 @@ import paneles.Tablero;
 public abstract class Pieza {
 
     int columna, fila, color;
+    boolean isHorizontal;
     paneles.Tablero referenciaTablero;
 
     public Pieza(Tablero referenciaTablero){

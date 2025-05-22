@@ -4,7 +4,7 @@ import paneles.Tablero;
 
 public class Linea extends Pieza {
 
-    boolean isHorizontal;
+
 
     public Linea(Tablero referenciaTablero) {
         super(referenciaTablero);
