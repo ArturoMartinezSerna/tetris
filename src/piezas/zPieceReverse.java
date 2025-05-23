@@ -2,10 +2,15 @@ package piezas;
 
 import paneles.Tablero;
 
-public class Escalera extends Pieza {
+/*
+     --
+    --
+ */
+public class zPieceReverse extends Pieza {
 
-    public Escalera(Tablero referenciaTablero) {
+    public zPieceReverse(Tablero referenciaTablero) {
         super(referenciaTablero);
+        color = 4;
     }
 
     @Override

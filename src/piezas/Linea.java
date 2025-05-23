@@ -4,8 +4,6 @@ import paneles.Tablero;
 
 public class Linea extends Pieza {
 
-
-
     public Linea(Tablero referenciaTablero) {
         super(referenciaTablero);
         color = 2;
