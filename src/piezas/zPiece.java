@@ -1,7 +1,11 @@
 package piezas;
 
 import paneles.Tablero;
-
+/*
+    **      *
+     **    **
+           *
+ */
 public class zPiece extends Pieza {
 
     public zPiece(Tablero referenciaTablero) {
