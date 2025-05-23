@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class Tablero extends JPanel implements KeyListener {
 
-    int[][] tablero = new int[8][8];
+    int[][] tablero = new int[16][10];
     Pieza piezaActual;
     int margenX = 25;
     int margenY = 25;
@@ -53,7 +53,7 @@ public class Tablero extends JPanel implements KeyListener {
                 piezaActual.moverY(1);
             }
         });
-        //timer.start();
+        timer.start();
     }
 
     @Override
@@ -78,11 +78,11 @@ public class Tablero extends JPanel implements KeyListener {
                     case 4: g.setColor(Color.yellow); break;
                     default: g.setColor(Color.white); break;
                 }
-                g.fillRect(margenX + j*100, margenY + i*100, 100, 100);
+                g.fillRect(margenX + j*50, margenY + i*50, 50, 50);
 
                 // Pinta la cuadrícula entre pieza y pieza
                 g.setColor(Color.black);
-                g.drawRect(margenX + j*100, margenY + i*100, 100, 100);
+                g.drawRect(margenX + j*50, margenY + i*50, 50, 50);
             }
         }
     }
