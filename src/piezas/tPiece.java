@@ -33,28 +33,33 @@ public class tPiece extends Pieza {
 
     @Override
     public boolean puedeGirar() {
-        switch(posicion) {
-            case 0: {
-                if(this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 0] == 0
-                && this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 2] == 0)
-                    return true;
-            } break;
-            case 1:{
-                if(this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 1] == 0
+        try{
+            switch(posicion) {
+                case 0: {
+                    if(this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 0] == 0
                     && this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 2] == 0)
-                    return true;
-            } break;
-            case 2:{
-                if(this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 0] == 0 &&
-                        this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 2] == 0)
-                    return true;
-            } break;
-            case 3:{
-                if(this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 2] == 0)
-                    return true;
-            } break;
+                        return true;
+                } break;
+                case 1:{
+                    if(this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 1] == 0
+                        && this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 2] == 0)
+                        return true;
+                } break;
+                case 2:{
+                    if(this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 0] == 0 &&
+                            this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 2] == 0)
+                        return true;
+                } break;
+                case 3:{
+                    if(this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 2] == 0)
+                        return true;
+                } break;
+            }
+            return false;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No puede girar!");
+            return false;
         }
-        return false;
     }
 
     public void draw(boolean borramos) {

@@ -26,14 +26,18 @@ public class zPieceReverse extends Pieza {
     @Override
     public boolean puedeGirar() {
         boolean puedeGirar;
-        if(isHorizontal) {
-            puedeGirar = referenciaTablero.getTablero()[this.fila][this.columna] == 0 && referenciaTablero.getTablero()[this.fila+2][this.columna+1] == 0;
-        }
-        else {
-            puedeGirar = referenciaTablero.getTablero()[this.fila][this.columna+1] == 0 && referenciaTablero.getTablero()[this.fila][this.columna+2] == 0;
-        }
+        try {
+            if (isHorizontal) {
+                puedeGirar = referenciaTablero.getTablero()[this.fila][this.columna] == 0 && referenciaTablero.getTablero()[this.fila + 2][this.columna + 1] == 0;
+            } else {
+                puedeGirar = referenciaTablero.getTablero()[this.fila][this.columna + 1] == 0 && referenciaTablero.getTablero()[this.fila][this.columna + 2] == 0;
+            }
 
-        return puedeGirar;
+            return puedeGirar;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("No puede girar!");
+            return false;
+        }
     }
 
     @Override
