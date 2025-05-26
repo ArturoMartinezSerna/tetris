@@ -29,13 +29,14 @@ public class Tablero extends JPanel implements KeyListener {
 
     public void generarPiezaAleatoria() {
         Random random = new Random();
-        int tipoPieza = random.nextInt(4);
+        int tipoPieza = random.nextInt(5);
 
         switch(tipoPieza) {
             case 0: piezaActual = new Cuadrado(this); break;
             case 1: piezaActual = new Linea(this); break;
             case 2: piezaActual = new zPiece(this); break;
             case 3: piezaActual = new zPieceReverse(this); break;
+            case 4: piezaActual = new tPiece(this); break;
         }
 
         if(piezaActual.puedeCrearse())
@@ -76,6 +77,7 @@ public class Tablero extends JPanel implements KeyListener {
                     case 2: g.setColor(Color.blue); break;
                     case 3: g.setColor(Color.red); break;
                     case 4: g.setColor(Color.yellow); break;
+                    case 5: g.setColor(Color.orange); break;
                     default: g.setColor(Color.white); break;
                 }
                 g.fillRect(margenX + j*50, margenY + i*50, 50, 50);
