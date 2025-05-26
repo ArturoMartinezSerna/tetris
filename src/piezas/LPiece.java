@@ -71,13 +71,6 @@ public class LPiece extends Pieza {
     public void draw() {
         draw(false);
 
-        for(int i = 0; i < referenciaTablero.getTablero().length; i++) {
-            for(int j = 0; j < referenciaTablero.getTablero()[0].length; j++) {
-                System.out.print(referenciaTablero.getTablero()[i][j]);
-            }
-            System.out.println();
-        }
-
         this.referenciaTablero.repaint();
     }
 
@@ -125,7 +118,6 @@ public class LPiece extends Pieza {
     @Override
     protected boolean puedeBajar() {
         try {
-            System.out.println("¿PODRA BAJAR?");
             switch (posicion) {
                 case 0: {
                     return referenciaTablero.getTablero()[this.fila+2][this.columna] == 0

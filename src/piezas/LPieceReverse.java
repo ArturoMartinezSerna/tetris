@@ -49,9 +49,8 @@ public class LPieceReverse extends Pieza {
                             && referenciaTablero.getTablero()[this.fila + 1][this.columna + 2] == 0;
                 }
                 case 2: {
-                    return referenciaTablero.getTablero()[this.fila][this.columna] == 0
-                            && referenciaTablero.getTablero()[this.fila + 1][this.columna] == 0
-                            && referenciaTablero.getTablero()[this.fila + 1][this.columna + 2] == 0;
+                    return referenciaTablero.getTablero()[this.fila][this.columna + 1] == 0
+                            && referenciaTablero.getTablero()[this.fila + 3][this.columna] == 0;
                 }
                 case 3: {
                     return referenciaTablero.getTablero()[this.fila][this.columna + 2] == 0
