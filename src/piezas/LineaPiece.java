@@ -2,9 +2,9 @@ package piezas;
 
 import paneles.Tablero;
 
-public class Linea extends Pieza {
+public class LineaPiece extends Pieza {
 
-    public Linea(Tablero referenciaTablero) {
+    public LineaPiece(Tablero referenciaTablero) {
         super(referenciaTablero);
         color = 2;
         isHorizontal = false;

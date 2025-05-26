@@ -2,9 +2,9 @@ package piezas;
 
 import paneles.Tablero;
 
-public class Cuadrado extends Pieza {
+public class CuadradoPiece extends Pieza {
 
-    public Cuadrado(Tablero referenciaTablero) {
+    public CuadradoPiece(Tablero referenciaTablero) {
         super(referenciaTablero);
         color = 1;
     }

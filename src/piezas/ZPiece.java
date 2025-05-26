@@ -6,9 +6,9 @@ import paneles.Tablero;
      **    **
            *
  */
-public class zPiece extends Pieza {
+public class ZPiece extends Pieza {
 
-    public zPiece(Tablero referenciaTablero) {
+    public ZPiece(Tablero referenciaTablero) {
         super(referenciaTablero);
         color = 3;
     }

@@ -10,10 +10,10 @@ import paneles.Tablero;
       ###     ##       #       ##
               #                 #
 */
-public class tPiece extends Pieza {
+public class TPiece extends Pieza {
     int posicion;
 
-    public tPiece(Tablero referenciaTablero) {
+    public TPiece(Tablero referenciaTablero) {
         super(referenciaTablero);
         color = 5;
         posicion = 0;

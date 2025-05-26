@@ -32,11 +32,11 @@ public class Tablero extends JPanel implements KeyListener {
         int tipoPieza = random.nextInt(5);
 
         switch(tipoPieza) {
-            case 0: piezaActual = new Cuadrado(this); break;
-            case 1: piezaActual = new Linea(this); break;
-            case 2: piezaActual = new zPiece(this); break;
-            case 3: piezaActual = new zPieceReverse(this); break;
-            case 4: piezaActual = new tPiece(this); break;
+            case 0: piezaActual = new CuadradoPiece(this); break;
+            case 1: piezaActual = new LineaPiece(this); break;
+            case 2: piezaActual = new ZPiece(this); break;
+            case 3: piezaActual = new ZPieceReverse(this); break;
+            case 4: piezaActual = new TPiece(this); break;
         }
 
         if(piezaActual.puedeCrearse())

@@ -7,9 +7,9 @@ import paneles.Tablero;
     --    **
            *
  */
-public class zPieceReverse extends Pieza {
+public class ZPieceReverse extends Pieza {
 
-    public zPieceReverse(Tablero referenciaTablero) {
+    public ZPieceReverse(Tablero referenciaTablero) {
         super(referenciaTablero);
         color = 4;
     }
