@@ -29,9 +29,7 @@ public class Tablero extends JPanel implements KeyListener {
 
     public void generarPiezaAleatoria() {
         Random random = new Random();
-        int tipoPieza = random.nextInt(6) + 1;
-        tipoPieza = 6;
-        System.out.println("Creada la pieza " + tipoPieza);
+        int tipoPieza = random.nextInt(7) + 1;
 
         switch(tipoPieza) {
             case 1: piezaActual = new CuadradoPiece(this); break;
@@ -58,7 +56,7 @@ public class Tablero extends JPanel implements KeyListener {
                 piezaActual.moverY(1);
             }
         });
-        //timer.start();
+        timer.start();
     }
 
     @Override
