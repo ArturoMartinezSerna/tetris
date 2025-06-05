@@ -155,6 +155,8 @@ public class Tablero extends JPanel implements KeyListener {
                 piezaActual.moverY(1);
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
                 piezaActual.girar();
+            } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                piezaActual.bajarAlFondo();
             }
         } catch(NullPointerException ex) {
             System.out.println("El juego ha terminado! No puedes moverte!");

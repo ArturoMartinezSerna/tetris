@@ -23,6 +23,8 @@ public abstract class Pieza {
     protected abstract boolean puedeMoverIzquierda();
     public abstract boolean puedeCrearse();
 
+
+
     public void moverY(int fila) {
         try {
             if(puedeBajar()) {
@@ -56,6 +58,12 @@ public abstract class Pieza {
             }
         } catch(ArrayIndexOutOfBoundsException e) {
             System.out.println("Fuera de rango X!");
+        }
+    }
+
+    public void bajarAlFondo() {
+        while(puedeBajar()) {
+            moverY(1);
         }
     }
 }
