@@ -50,7 +50,7 @@ public class Tablero extends JPanel implements KeyListener {
     }
 
     public void start() {
-        int msRetraso = 500;
+        int msRetraso = 400;
         timer = new Timer(msRetraso, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 piezaActual.moverY(1);

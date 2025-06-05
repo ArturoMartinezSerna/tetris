@@ -31,13 +31,23 @@ public class TPiece extends Pieza {
         }
     }
 
+
+    /*
+
+       0      1        2        3
+
+       #      #       ###       #
+      ###     ##       #       ##
+              #                 #
+    */
+
     @Override
     public boolean puedeGirar() {
         try{
             switch(posicion) {
                 case 0: {
                     if(this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 0] == 0
-                    && this.referenciaTablero.getTablero()[this.fila + 0][this.columna + 2] == 0)
+                    && this.referenciaTablero.getTablero()[this.fila + 2][this.columna + 0] == 0)
                         return true;
                 } break;
                 case 1:{
@@ -47,7 +57,7 @@ public class TPiece extends Pieza {
                 } break;
                 case 2:{
                     if(this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 0] == 0 &&
-                            this.referenciaTablero.getTablero()[this.fila + 1][this.columna + 2] == 0)
+                            this.referenciaTablero.getTablero()[this.fila + 2][this.columna + 1] == 0)
                         return true;
                 } break;
                 case 3:{
